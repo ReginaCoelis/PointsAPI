@@ -13,7 +13,7 @@ public class PointsController {
     }
     //pathVariable- for identifying a particular resource
     @PostMapping("/add/{userId}")
-    public String addPoints(@PathVariable int userId, @RequestBody Transaction transaction){
+    public String addPoints(@PathVariable int userId, @RequestBody TransactionDto transactionDto){
         return "";
     }
     //RequestParameter
