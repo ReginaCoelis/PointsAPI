@@ -2,26 +2,17 @@ package com.example.points.controller;
 
 import java.util.Date;
 
-public class Transaction {
+public class SpentPointsTransaction {
     private String payerName;
-    private int points;
-    private int spentPoints;
+    private long points;
     private Date transactionDate;
 
-    public int getPoints() {
+    public long getPoints() {
         return points;
     }
 
-    public void setPoints(int points) {
+    public void setPoints(long points) {
         this.points = points;
-    }
-
-    public int getSpentPoints() {
-        return spentPoints;
-    }
-
-    public void setSpentPoints(int spentPoints) {
-        this.spentPoints = spentPoints;
     }
 
     public Date getTransactionDate() {
@@ -36,10 +27,6 @@ public class Transaction {
         return transactionDate;
     }
 
-    public void setTransactiondate(Date transactiondate) {
-        this.transactionDate = transactiondate;
-    }
-
     public String getPayerName() {
         return payerName;
     }
@@ -47,4 +34,5 @@ public class Transaction {
     public void setPayerName(String payerName) {
         this.payerName = payerName;
     }
+
 }

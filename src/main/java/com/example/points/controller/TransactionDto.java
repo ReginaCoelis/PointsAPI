@@ -10,7 +10,6 @@ public class TransactionDto {
     private Date transactionDate;
 
     public int getPoints() {
-        Supplier
         return points;
     }
 
