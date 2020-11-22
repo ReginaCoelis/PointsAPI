@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.PriorityQueue;
 
-@Repository
 public interface PointsRepo {
     Optional<UserPoints> findById(Long userId);
     void addNewPoints(Long userId, NewPointsTransaction newPointsTransaction);

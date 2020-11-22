@@ -6,22 +6,22 @@ import java.util.function.Supplier;
 
 public class TransactionDto {
     private String payerName;
-    private int points;
+    private long points;
     private Date transactionDate;
 
-    public int getPoints() {
+    public long getPoints() {
         return points;
     }
 
-    public void setPoints(int points) {
+    public void setPoints(long points) {
         this.points = points;
     }
 
-    public Date getTransactiondate() {
+    public Date getTransactionDate() {
         return transactionDate;
     }
 
-    public void setTransactiondate(Date transactiondate) {
+    public void setTransactionDate(Date transactiondate) {
         this.transactionDate = transactiondate;
     }
 

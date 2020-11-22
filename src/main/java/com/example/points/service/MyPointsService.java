@@ -4,6 +4,7 @@ import com.example.points.controller.SpentPointsTransaction;
 import com.example.points.controller.TransactionDto;
 import com.example.points.controller.NewPointsTransaction;
 import com.example.points.repository.PointsRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -11,16 +12,17 @@ import java.util.stream.Collectors;
 
 @Service
 public class MyPointsService implements PointsService {
-    private final PointsRepo repo;
-    public MyPointsService(PointsRepo repo) {
-        this.repo = repo;
-    }
+
+    @Autowired
+    private PointsRepo repo;
+
 
     @Override
     public void addPoints(long userId, TransactionDto transactionDto) {
         NewPointsTransaction newPointsTransaction = new NewPointsTransaction();
         newPointsTransaction.setPoints(transactionDto.getPoints());
         newPointsTransaction.setPayerName(transactionDto.getPayerName());
+        newPointsTransaction.setTransactionDate(transactionDto.getTransactionDate());
         newPointsTransaction.setCreatedAt(new Date());
         repo.addNewPoints(userId, newPointsTransaction);
         String payerName = transactionDto.getPayerName();
@@ -66,6 +68,17 @@ public class MyPointsService implements PointsService {
         List<SpentPointsTransaction> spentPointsTransactions = buildSpentPointsTransaction(payerSpentPoints);
         repo.saveSpentPoints(userId, spentPointsTransactions);
         return spentPointsTransactions;
+    }
+
+    @Override
+    public List<TransactionDto> getPointBal(long userId) {
+        return repo.getPayers(userId).entrySet().stream().map(e->{
+            TransactionDto transactionDto = new TransactionDto();
+            transactionDto.setPayerName(e.getKey());
+            transactionDto.setPoints(e.getValue());
+            transactionDto.setTransactionDate(new Date());
+            return transactionDto;
+        }).collect(Collectors.toList());
     }
 
     private List<SpentPointsTransaction> buildSpentPointsTransaction(Map<String, Long> payerSpentPoints) {
