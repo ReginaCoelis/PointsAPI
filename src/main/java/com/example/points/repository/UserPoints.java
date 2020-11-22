@@ -10,10 +10,9 @@ public class UserPoints {
     private final PriorityQueue<NewPointsTransaction> unSpentOldestNewPointsTransactions;
     private final LinkedList<SpentPointsTransaction> spentPointsUnSpentPointsTransactions;
 
-    public UserPoints(){
+    public UserPoints() {
         payers = new HashMap<>();
-        unSpentOldestNewPointsTransactions =
-                new PriorityQueue<>(Comparator.comparing(NewPointsTransaction::getTransactiondate).reversed());
+        unSpentOldestNewPointsTransactions = new PriorityQueue<>();
         spentPointsUnSpentPointsTransactions = new LinkedList<>();
     }
 

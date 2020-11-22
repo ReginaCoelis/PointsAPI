@@ -19,4 +19,6 @@ public interface PointsRepo {
     Map<String, Long> getPayers(Long userId);
     PriorityQueue<NewPointsTransaction> getUnspentPoints(long userId);
     void saveSpentPoints(long userId, List<SpentPointsTransaction> spentPointsTransactions);
+    PriorityQueue<NewPointsTransaction> getPayerUnspentPoints(long userId, String payerName);
+    List<SpentPointsTransaction> getSpentPoints(long userId);
 }

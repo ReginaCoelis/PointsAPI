@@ -12,7 +12,7 @@ public class SpentPointsTransaction {
     }
 
     public void setPoints(long points) {
-        this.points = points;
+        this.points = -points;
     }
 
     public Date getTransactionDate() {
@@ -21,10 +21,6 @@ public class SpentPointsTransaction {
 
     public void setTransactionDate(Date transactionDate) {
         this.transactionDate = transactionDate;
-    }
-
-    public Date getTransactiondate() {
-        return transactionDate;
     }
 
     public String getPayerName() {

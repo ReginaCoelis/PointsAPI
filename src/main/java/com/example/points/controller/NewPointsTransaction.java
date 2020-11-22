@@ -2,7 +2,7 @@ package com.example.points.controller;
 
 import java.util.Date;
 
-public class NewPointsTransaction {
+public class NewPointsTransaction implements Comparable< NewPointsTransaction> {
     private String payerName;
     private long points;
     private long spentPoints;
@@ -55,5 +55,10 @@ public class NewPointsTransaction {
 
     public long getBalance() {
         return points - spentPoints;
+    }
+
+    @Override
+    public int compareTo(NewPointsTransaction t) {
+        return this.transactionDate.compareTo(t.getTransactionDate());
     }
 }

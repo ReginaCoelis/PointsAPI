@@ -19,6 +19,11 @@ public class PointsController {
         return service.getPointBal(userId);
     }
 
+    @GetMapping("/spent/{userId}")
+    public List<SpentPointsTransaction> spentPoints(@PathVariable long userId){
+        return service.getSpentPoints(userId);
+    }
+
     //pathVariable- for identifying a particular resource
     //adding points
     @PostMapping("/add/{userId}")

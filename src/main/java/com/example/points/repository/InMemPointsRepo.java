@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.PriorityQueue;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 @Repository
 public class InMemPointsRepo implements PointsRepo {
@@ -56,6 +57,16 @@ public class InMemPointsRepo implements PointsRepo {
     @Override
     public void saveSpentPoints(long userId, List<SpentPointsTransaction> spentPointsTransactions) {
         userPointsStore.getOrDefault(userId, new UserPoints()).getSpentPointsTransactions().addAll(spentPointsTransactions);
+    }
+
+    @Override
+    public PriorityQueue<NewPointsTransaction> getPayerUnspentPoints(long userId, String payerName) {
+        return getUnspentPoints(userId).stream().filter(name -> name.getPayerName().equals(payerName)).collect(Collectors.toCollection(PriorityQueue::new));
+    }
+
+    @Override
+    public List<SpentPointsTransaction> getSpentPoints(long userId) {
+        return userPointsStore.getOrDefault(userId, new UserPoints()).getSpentPointsTransactions();
     }
 
     private void checkUserPointsEnough(UserPoints userPoints, long points) {
