@@ -16,6 +16,7 @@ public class PointsController {
 
     @GetMapping("/balance/{userId}")
     public List<TransactionDto> pointBal(@PathVariable long userId){
+
         return service.getPointBal(userId);
     }
 
@@ -27,8 +28,9 @@ public class PointsController {
     //pathVariable- for identifying a particular resource
     //adding points
     @PostMapping("/add/{userId}")
-    public void addPoints(@PathVariable long userId, @RequestBody TransactionDto transactionDto){
+    public String addPoints(@PathVariable long userId, @RequestBody TransactionDto transactionDto){
         service.addPoints(userId, transactionDto);
+        return transactionDto.getPayerName() + " Points successfully added!";
     }
 
     //RequestParameter
