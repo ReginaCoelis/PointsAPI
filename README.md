@@ -8,7 +8,7 @@ Open the repository https://github.com/ReginaCoelis/PointsAPI and on the right h
 Right click on the folder and select git bash here. A terminal will open, and you run the command to clone the project:  git clone https://github.com/ReginaCoelis/PointsAPI.git
 The above command will clone the project.
 
-Step 2: Packaging the project in maven
+Step 2: Packaging the project with maven
 Go to the root of the cloned project and run :  ./mvnw package 
 
 Step 3: Running the API
